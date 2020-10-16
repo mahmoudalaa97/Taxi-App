@@ -19,6 +19,7 @@ class _TaxiBookingTaxisWidgetState extends State<TaxiBookingTaxisWidget> {
     TaxiType.Premium,
     TaxiType.Platinum
   ];
+
   @override
   void initState() {
     super.initState();
@@ -39,40 +40,45 @@ class _TaxiBookingTaxisWidgetState extends State<TaxiBookingTaxisWidget> {
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 6.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Text(
-                    "Choose Taxi",
-                    style: Theme.of(context).textTheme.headline,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  buildTaxis(),
-                  buildPriceDetails(),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  buildLocation(taxiBooking.source.areaDetails, "From"),
-                  SizedBox(
-                    height: 12.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Divider(),
-                  ),
-                  SizedBox(
-                    height: 12.0,
-                  ),
-                  buildLocation(taxiBooking.destination.areaDetails, "To"),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Text(
+                      "Choose Taxi",
+                      style: Theme.of(context).textTheme.headline,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    buildTaxis(),
+                    buildPriceDetails(),
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    buildLocation(taxiBooking.source.areaDetails, "From"),
+                    SizedBox(
+                      height: 12.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Divider(),
+                    ),
+                    SizedBox(
+                      height: 12.0,
+                    ),
+                    buildLocation(taxiBooking.destination.areaDetails, "To"),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -113,6 +119,7 @@ class _TaxiBookingTaxisWidgetState extends State<TaxiBookingTaxisWidget> {
       children: taxiTypes
           .map((val) => GestureDetector(
                 onTap: () {
+                  print(val);
                   setState(() {
                     selectedTaxiType = val;
                   });
@@ -161,7 +168,9 @@ class _TaxiBookingTaxisWidgetState extends State<TaxiBookingTaxisWidget> {
           children: <Widget>[
             buildIconText("21 km", Icons.directions),
             buildIconText("1-3", Icons.person_outline),
-            buildIconText("\$150", Icons.monetization_on),
+            buildIconText(
+                "\$${selectedTaxiType == TaxiType.Standard ? "150" : selectedTaxiType == TaxiType.Premium ? "250" : "400"}",
+                Icons.monetization_on),
           ],
         ),
         SizedBox(

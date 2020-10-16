@@ -70,7 +70,8 @@ class TaxiBookingBloc extends Bloc<TaxiBookingEvent, TaxiBookingState> {
       TaxiDriver taxiDriver =
           await TaxiBookingController.getTaxiDriver(booking);
       yield TaxiNotConfirmedState(booking: booking, driver: taxiDriver);
-      await Future.delayed(Duration(seconds: 1));
+      // Waiting 5 Second and Confirm Order
+      await Future.delayed(Duration(seconds: 5));
       yield TaxiBookingConfirmedState(booking: booking, driver: taxiDriver);
     }
     if (event is TaxiBookingCancelEvent) {

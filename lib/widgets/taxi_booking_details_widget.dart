@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi_app/bloc/taxi_booking_bloc.dart';
@@ -36,43 +37,48 @@ class _TaxiBookingDetailsWidgetState extends State<TaxiBookingDetailsWidget> {
         children: <Widget>[
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 6.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Text(
-                    "Address",
-                    style: Theme.of(context).textTheme.headline,
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  buildInputWidget(source?.areaDetails, "hint", () {}),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  buildInputWidget(destination?.areaDetails,
-                      "Enter your destination", () {}),
-                  SizedBox(
-                    height: 36.0,
-                  ),
-                  Text(
-                    "Seat and Time",
-                    style: Theme.of(context).textTheme.headline,
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  buildPersonSelector(),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  buildTimeSelector()
-                ],
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Text(
+                      "Address",
+                      style: Theme.of(context).textTheme.headline,
+                    ),
+                    SizedBox(
+                      height: 24.0,
+                    ),
+                    buildInputWidget(source?.areaDetails, "hint", () {}),
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    buildInputWidget(destination?.areaDetails,
+                        "Enter your destination", () {}),
+                    SizedBox(
+                      height: 36.0,
+                    ),
+                    Text(
+                      "Seat and Time",
+                      style: Theme.of(context).textTheme.headline,
+                    ),
+                    SizedBox(
+                      height: 24.0,
+                    ),
+                    buildPersonSelector(),
+                    SizedBox(
+                      height: 24.0,
+                    ),
+                    buildTimeSelector(),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

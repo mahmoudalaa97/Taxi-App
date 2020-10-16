@@ -4,6 +4,7 @@ import 'package:taxi_app/bloc/taxi_booking_bloc.dart';
 import 'package:taxi_app/bloc/taxi_booking_state.dart';
 import 'package:taxi_app/models/taxi_booking.dart';
 import 'package:taxi_app/models/taxi_driver.dart';
+import 'package:taxi_app/models/taxi_type.dart';
 import 'package:taxi_app/widgets/rounded_button.dart';
 import 'package:taxi_app/widgets/taxi_booking_cancellation_dialog.dart';
 
@@ -175,7 +176,7 @@ class _TaxiBookingNotConfirmedWidgetState
           children: <Widget>[
             buildIconText("21 km", Icons.directions),
             buildIconText("1-3", Icons.person_outline),
-            buildIconText("\$150", Icons.monetization_on),
+            buildIconText("\$${booking.taxiType  == TaxiType.Standard ? "150" : booking.taxiType == TaxiType.Premium ? "250" : "400"}", Icons.monetization_on),
           ],
         ),
         SizedBox(
